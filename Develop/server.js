@@ -36,7 +36,9 @@ app.post('/api/notes', async (req, res) => {
             currentNotes.push(response);
 
             await fs.writeFile('./db/db.json', JSON.stringify(currentNotes));
-
+            
+            noteData.push(response);
+            
             res.status(201).json(response);
         } catch {
             res.status(400).json('Request body must at least contain a title and content.');
