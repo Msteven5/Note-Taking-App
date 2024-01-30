@@ -54,13 +54,10 @@ app.delete('/api/notes/:id', (req, res) => {
     const delRequest = req.params.id
 
     for (let i = 0; i < noteData.length; i++)
-        // noteID = JSON.stringify(noteData[i].id)
         if (noteData[i].id === delRequest) {
             noteData.splice(i, 1);
-        } else {
-            console.info('ID does not exist.')
         }
-
+        
     fs.writeFile('./db/db.json', JSON.stringify(noteData))
         .then(() => {
             res.json({ message: 'Note deleted successfully', deletedNoteId: delRequest });
