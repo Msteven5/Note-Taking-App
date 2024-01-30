@@ -1,4 +1,4 @@
-# README Generator
+# Note-Taking-App
 
 ## Table Of Contents
 
