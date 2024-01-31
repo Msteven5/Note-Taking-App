@@ -38,7 +38,7 @@ app.post('/api/notes', async (req, res) => {
 
             currentNotes.push(response);
 
-            await fs.writeFile('./db/db.json', JSON.stringify(currentNotes));
+            await fs.writeFile('./db/db.json', JSON.stringify(currentNotes, null, 2));
 
             noteData.push(response);
 
@@ -58,7 +58,7 @@ app.delete('/api/notes/:id', (req, res) => {
             noteData.splice(i, 1);
         }
         
-    fs.writeFile('./db/db.json', JSON.stringify(noteData))
+    fs.writeFile('./db/db.json', JSON.stringify(noteData, null, 2))
         .then(() => {
             res.json({ message: 'Note deleted successfully', deletedNoteId: delRequest });
         })
